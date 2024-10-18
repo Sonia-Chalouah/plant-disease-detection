@@ -1,0 +1,8 @@
+{% block content %}
+  <h1>{% if plante %}Modifier la plante{% else %}Ajouter une nouvelle plante{% endif %}</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+  </form>
+{% endblock %}

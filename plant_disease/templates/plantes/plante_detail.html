@@ -1,0 +1,13 @@
+
+
+{% block content %}
+  <h1>{{ plante.nom }}</h1>
+  <p>{{ plante.description }}</p>
+  {% if plante.image %}
+    <img src="{{ plante.image.url }}" alt="{{ plante.nom }}">
+  {% endif %}
+  <p>
+    <a href="{% url 'plante-update' plante.pk %}">Modifier</a> |
+    <a href="{% url 'plante-delete' plante.pk %}">Supprimer</a>
+  </p>
+{% endblock %}

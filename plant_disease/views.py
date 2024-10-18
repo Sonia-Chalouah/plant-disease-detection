@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from .model import predict_image
 from . import utils
 from django.core.files.storage import default_storage
-from django.utils.safestring import mark_safe  # Equivalent to Markup in Flask
+from django.utils.safestring import mark_safe  
 
 def backoffice_view(request):
     return render(request, 'backoffice.html')  # Adjust path as necessary
@@ -11,7 +11,7 @@ def backoffice_view(request):
 
 def dashboard_view(request):
     return render(request, 'indexback.html')  # Adjust path as necessary
-    
+
 # Home page view
 def home(request):
     return render(request, 'index.html')
@@ -39,3 +39,6 @@ def predict(request):
             return render(request, 'index.html', {'status': 500, 'res': "Internal Server Error"})
 
     return render(request, 'index.html')
+
+
+
