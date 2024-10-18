@@ -1,0 +1,11 @@
+<!-- templates/pests/pest_confirm_delete.html -->
+{% block content %}
+  <h1>Supprimer le ravageur : {{ pest.nom }}</h1>
+  <p>Êtes-vous sûr de vouloir supprimer ce ravageur ? Cette action est irréversible.</p>
+  
+  <form method="POST">
+      {% csrf_token %}
+      <button type="submit">Confirmer</button>
+      <a href="{% url 'pest-list' %}">Annuler</a>
+  </form>
+{% endblock %}

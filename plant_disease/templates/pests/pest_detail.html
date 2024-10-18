@@ -1,0 +1,12 @@
+<!-- templates/pests/pest_detail.html -->
+{% block content %}
+  <h1>{{ pest.nom }}</h1>
+  <p>{{ pest.description }}</p>
+  {% if pest.image %}
+    <img src="{{ pest.image.url }}" alt="{{ pest.nom }}">
+  {% endif %}
+  <p>
+    <a href="{% url 'pest-update' pest.pk %}">Modifier</a> |
+    <a href="{% url 'pest-delete' pest.pk %}">Supprimer</a>
+  </p>
+{% endblock %}
