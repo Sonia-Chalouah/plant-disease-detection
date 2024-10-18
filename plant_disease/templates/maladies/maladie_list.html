@@ -1,0 +1,14 @@
+
+{% block content %}
+  <h1>Liste des Maladies</h1>
+  <a href="{% url 'maladie-create' %}">Créer une nouvelle maladie</a>
+  <ul>
+    {% for maladie in maladies %}
+      <li>
+        <a href="{% url 'maladie-detail' maladie.pk %}">{{ maladie.nom }}</a>
+        <a href="{% url 'maladie-update' maladie.pk %}">Modifier</a>
+        <a href="{% url 'maladie-delete' maladie.pk %}">Supprimer</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

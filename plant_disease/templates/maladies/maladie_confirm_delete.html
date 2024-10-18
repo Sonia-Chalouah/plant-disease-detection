@@ -1,0 +1,12 @@
+
+{% block content %}
+  <h1>Supprimer la Maladie: {{ maladie.nom }}</h1>
+  <p>Êtes-vous sûr de vouloir supprimer cette maladie ?</p>
+  
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmer la suppression</button>
+  </form>
+  
+  <a href="{% url 'maladie-list' %}">Annuler</a>
+{% endblock %}
