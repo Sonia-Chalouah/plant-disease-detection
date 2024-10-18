@@ -1,10 +1,28 @@
-<!-- templates/pests/pest_detail.html -->
 {% block content %}
   <h1>{{ pest.nom }}</h1>
-  <p>{{ pest.description }}</p>
+
+  <!-- Affichage du type de ravageur -->
+  <p><strong>Type :</strong> {{ pest.get_type_display }}</p> <!-- get_type_display affiche le label du choix -->
+
+  <!-- Affichage de la description -->
+  <p><strong>Description :</strong> {{ pest.description }}</p>
+
+  <!-- Affichage de l'image si elle existe -->
   {% if pest.image %}
     <img src="{{ pest.image.url }}" alt="{{ pest.nom }}">
   {% endif %}
+
+  <!-- Affichage des plantes associées -->
+  <p><strong>Plantes affectées :</strong></p>
+  <ul>
+    {% for plante in pest.plantes.all %}
+      <li>{{ plante.nom }}</li> <!-- Affiche le nom de chaque plante liée -->
+    {% empty %}
+      <li>Aucune plante associée</li>
+    {% endfor %}
+  </ul>
+
+  <!-- Liens de modification et suppression -->
   <p>
     <a href="{% url 'pest-update' pest.pk %}">Modifier</a> |
     <a href="{% url 'pest-delete' pest.pk %}">Supprimer</a>
