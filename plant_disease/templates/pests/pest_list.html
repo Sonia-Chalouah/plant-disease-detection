@@ -1,0 +1,22 @@
+<!-- templates/pests/pest_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Ravageurs</title>
+</head>
+<body>
+    <h1>Liste des Ravageurs</h1>
+    <ul>
+        {% for pest in pests %}
+            <li>
+                <a href="{% url 'pest-detail' pest.pk %}">{{ pest.nom }}</a> - {{ pest.description }}
+            </li>
+        {% empty %}
+            <li>Aucun ravageur disponible.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'pest-create' %}">Ajouter un nouveau ravageur</a>
+</body>
+</html>
