@@ -1,0 +1,12 @@
+
+{% block content %}
+  <h1>{% if form.instance.pk %}Modifier{% else %}Créer{% endif %} une Maladie</h1>
+  
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Soumettre</button>
+  </form>
+
+  <a href="{% url 'maladie-list' %}">Annuler</a>
+{% endblock %}
