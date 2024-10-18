@@ -1,0 +1,9 @@
+
+
+{% block content %}
+  <h1>Supprimer {{ plante.nom }} ?</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit">Confirmer la suppression</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,13 @@
+
+
+{% block content %}
+  <h1>Liste des types de plantes</h1>
+  <a href="{% url 'typePlantes-create' %}">Ajouter une nouvelle plante</a>
+  <ul>
+    {% for plante in plantes %}
+      <li>
+        <a href="{% url 'typePlantes-detail' plante.pk %}">{{ plante.nom }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

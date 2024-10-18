@@ -1,0 +1,23 @@
+<!-- templates/plantes/plante_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Plantes</title>
+</head>
+<body>
+    <h1>Liste des Plantes</h1>
+    <ul>
+        {% for plante in plantes %}
+            <li>
+                <a href="{% url 'plante-detail' plante.pk %}">{{ plante.nom }}</a>
+                - {{ plante.description }}
+            </li>
+        {% empty %}
+            <li>Aucune plante n'est disponible.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'plante-create' %}">Ajouter une nouvelle plante</a>
+</body>
+</html>
