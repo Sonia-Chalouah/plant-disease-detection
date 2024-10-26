@@ -1,0 +1,12 @@
+
+{% block content %}
+<h2>Causes de Maladies</h2>
+<ul>
+    {% for cause in causes_maladie %}
+        <li>
+            <a href="{% url 'cause_maladie-detail' cause.pk %}">{{ cause.nom }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'cause_maladie-create' %}">Ajouter une Cause de Maladie</a>
+{% endblock %}
