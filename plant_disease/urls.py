@@ -2,7 +2,9 @@ from django.urls import path
 from . import views
 
 from  plant_disease.view import TypeView, plantView, MaladieView, pestView , TraitementView, causeView, ControlProductView, symptomeView, preventionView, chatbotView , DiagnosticView 
-
+from accounts import views as accounts_views
+from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 from .views import dashboard_view
 from django.conf import settings
 from django.conf.urls.static import static
@@ -64,7 +66,7 @@ urlpatterns = [
     path('traitements/update/<int:pk>/', TraitementView.TraitementUpdateView.as_view(), name='traitement-update'),
     path('traitements/delete/<int:pk>/', TraitementView.TraitementDeleteView.as_view(), name='traitement-delete'),
 
- path('', DiagnosticView.DiagnosticListView.as_view(), name='diagnostic-list'),
+ path('Diagnostic/', DiagnosticView.DiagnosticListView.as_view(), name='diagnostic-list'),
     path('diagnostic/<int:pk>/', DiagnosticView.DiagnosticDetailView.as_view(), name='diagnostic-detail'),
     path('diagnostic/create/', DiagnosticView.DiagnosticCreateView.as_view(), name='diagnostic-create'),
     path('diagnostic/<int:pk>/update/', DiagnosticView.DiagnosticUpdateView.as_view(), name='diagnostic-update'),
@@ -83,8 +85,14 @@ urlpatterns = [
     path('preventions/<int:pk>/delete/', preventionView.PreventionDeleteView.as_view(), name='prevention-delete'),  # Delete view
 
     
-      path('chatbot/', chatbotView.chat_interface, name='chat_interface'),  # GET request for the chat interface
+    path('chatbot/', chatbotView.chat_interface, name='chat_interface'),  # GET request for the chat interface
     path('chatbot/api/', chatbotView.chat, name='chatbot_api'),  # POST request for handling chat messages
+
+    #*********user*************
+     path('register/', accounts_views.register, name='register'),
+    path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html', next_page='backoffice'), name='login'),
+    path('logout_client/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout_client'),
+
 
 ]
 

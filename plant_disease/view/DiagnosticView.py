@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from plant_disease.Model.diagnostic import Diagnostic  # Assurez-vous que ce chemin est correct
+from plant_disease.Model.Diagnostic import Diagnostic  # Assurez-vous que ce chemin est correct
 
 # Liste des diagnostics (Read - List)
 class DiagnosticListView(ListView):
