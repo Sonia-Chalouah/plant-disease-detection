@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'planteDb',
         'USER': 'postgres',
-        'PASSWORD': 'postgre',
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '5432',
         'OPTIONS': {

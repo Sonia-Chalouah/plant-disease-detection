@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
+
 from  plant_disease.view import TypeView, plantView, pestView, ControlProductView
+
 from .views import dashboard_view
 from django.conf import settings
 from django.conf.urls.static import static
@@ -38,7 +40,17 @@ urlpatterns = [
     path('control-products/<int:pk>/update/', ControlProductView.ControlProductUpdateView.as_view(), name='controlproduct-update'),
     path('control-products/<int:pk>/delete/', ControlProductView.ControlProductDeleteView.as_view(), name='controlproduct-delete'),
     
+
+      # Maladie URLs
+    path('maladies/', MaladieView.MaladieListView.as_view(), name='maladie-list'),
+    path('maladies/<int:pk>/', MaladieView.MaladieDetailView.as_view(), name='maladie-detail'),
+    path('maladies/create/', MaladieView.MaladieCreateView.as_view(), name='maladie-create'),
+    path('maladies/<int:pk>/update/', MaladieView.MaladieUpdateView.as_view(), name='maladie-update'),
+    path('maladies/<int:pk>/delete/', MaladieView.MaladieDeleteView.as_view(), name='maladie-delete'),
+    path('maladies/', MaladieView.MaladieListView.as_view(), name='maladie-list'),
 ]
+
+
 
 
 

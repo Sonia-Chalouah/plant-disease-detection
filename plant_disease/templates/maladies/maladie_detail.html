@@ -1,0 +1,17 @@
+
+{% block content %}
+  <h1>Détails de la Maladie: {{ maladie.nom }}</h1>
+  <p><strong>Description:</strong> {{ maladie.description }}</p>
+  <p><strong>Type:</strong> {{ maladie.type }}</p>
+  
+  <h3>Plantes Associées:</h3>
+  <ul>
+    {% for plante in maladie.plantes.all %}
+      <li>{{ plante.nom }}</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'maladie-update' maladie.pk %}">Modifier</a>
+  <a href="{% url 'maladie-delete' maladie.pk %}">Supprimer</a>
+  <a href="{% url 'maladie-list' %}">Retour à la liste</a>
+{% endblock %}
