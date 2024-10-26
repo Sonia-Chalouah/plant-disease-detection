@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-from  plant_disease.view import TypeView, plantView, MaladieView, pestView , TraitementView, causeView, ControlProductView, symptomeView, preventionView, chatbotView 
+
+from  plant_disease.view import TypeView, plantView, MaladieView, pestView , TraitementView, causeView, ControlProductView, symptomeView, preventionView, chatbotView , DiagnosticView 
 
 from .views import dashboard_view
 from django.conf import settings
@@ -63,6 +64,11 @@ urlpatterns = [
     path('traitements/update/<int:pk>/', TraitementView.TraitementUpdateView.as_view(), name='traitement-update'),
     path('traitements/delete/<int:pk>/', TraitementView.TraitementDeleteView.as_view(), name='traitement-delete'),
 
+ path('', DiagnosticView.DiagnosticListView.as_view(), name='diagnostic-list'),
+    path('diagnostic/<int:pk>/', DiagnosticView.DiagnosticDetailView.as_view(), name='diagnostic-detail'),
+    path('diagnostic/create/', DiagnosticView.DiagnosticCreateView.as_view(), name='diagnostic-create'),
+    path('diagnostic/<int:pk>/update/', DiagnosticView.DiagnosticUpdateView.as_view(), name='diagnostic-update'),
+    path('diagnostic/<int:pk>/delete/', DiagnosticView.DiagnosticDeleteView.as_view(), name='diagnostic-delete'),
      # URLs for Symptôme
    path('symptomes/', symptomeView.SymptomeListView.as_view(), name='symptome-list'),  # Corrected: Use .as_view()
     path('symptomes/<int:pk>/', symptomeView.SymptomeDetailView.as_view(), name='symptome-detail'),  # Detail view

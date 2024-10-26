@@ -1,0 +1,33 @@
+<!-- diagnostics/diagnostic_list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Liste des Diagnostics</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Plante</th>
+            <th>Maladie</th>
+            <th>Traitement</th>
+            <th>Date du Diagnostic</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for diagnostic in diagnostics %}
+        <tr>
+            <td>{{ diagnostic.plante.nom }}</td>
+            <td>{{ diagnostic.maladie.nom }}</td>
+            <td>{{ diagnostic.traitement.nom if diagnostic.traitement else "Aucun" }}</td>
+            <td>{{ diagnostic.date_diagnostic }}</td>
+            <td>
+                <a href="{% url 'diagnostic-detail' diagnostic.id %}">Détails</a>
+                <a href="{% url 'diagnostic-update' diagnostic.id %}">Modifier</a>
+                <a href="{% url 'diagnostic-delete' diagnostic.id %}">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'diagnostic-create' %}">Créer un nouveau diagnostic</a>
+{% endblock %}
