@@ -1,4 +1,7 @@
+{% include "../navbackoffice.html" %}
+
 {% block content %}
+
 <h2>{% if object %}Modifier{% else %}Ajouter{% endif %} une Cause de Maladie</h2>
 <form method="post">
     {% csrf_token %}

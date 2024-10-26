@@ -1,14 +1,39 @@
 
+
+{% include "../navbackoffice.html" %}
+
+
+
+
 {% block content %}
-  <h1>Liste des Maladies</h1>
-  <a href="{% url 'maladie-create' %}">Créer une nouvelle maladie</a>
-  <ul>
-    {% for maladie in maladies %}
-      <li>
-        <a href="{% url 'maladie-detail' maladie.pk %}">{{ maladie.nom }}</a>
-        <a href="{% url 'maladie-update' maladie.pk %}">Modifier</a>
-        <a href="{% url 'maladie-delete' maladie.pk %}">Supprimer</a>
-      </li>
-    {% endfor %}
-  </ul>
+
+
+
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="text-center">Liste des Maladies</h1>
+      <div class="text-center my-3">
+        <a href="/maladies/create/" class="btn btn-success">
+          Créer une nouvelle maladie
+        </a>
+      </div>
+      <ul class="list-group">
+        {% for maladie in maladies %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="/maladies/{{ maladie.pk }} "class="text-decoration-none">
+             
+              {{ maladie.nom }}
+            </a>
+            <span class="badge bg-primary rounded-pill"></span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
 {% endblock %}
+
+
+
