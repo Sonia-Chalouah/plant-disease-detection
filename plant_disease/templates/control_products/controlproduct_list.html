@@ -1,0 +1,12 @@
+<!-- control_products/controlproduct_list.html -->
+<h1>Liste des Produits de Contrôle</h1>
+<ul>
+    {% for control_product in control_products %}
+        <li>
+            <a href="{% url 'controlproduct-detail' control_product.pk %}">{{ control_product.nom }}</a> 
+            - <a href="{% url 'controlproduct-update' control_product.pk %}">Modifier</a> 
+            - <a href="{% url 'controlproduct-delete' control_product.pk %}">Supprimer</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'controlproduct-create' %}">Créer un nouveau produit de contrôle</a>
