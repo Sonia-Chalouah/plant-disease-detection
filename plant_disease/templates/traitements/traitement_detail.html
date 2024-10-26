@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Détails du traitement : {{ traitement.nom }}</h2>
+  <p><strong>Description :</strong> {{ traitement.description }}</p>
+  <p><strong>Méthode :</strong> {{ traitement.méthode }}</p>
+  <p><strong>Maladie associée :</strong> {{ traitement.maladie.nom }}</p>
+  
+  <a href="{% url 'traitement-update' traitement.pk %}">Modifier</a>
+  <a href="{% url 'traitement-delete' traitement.pk %}">Supprimer</a>
+  <a href="{% url 'traitement-list' %}">Retour à la liste des traitements</a>
+{% endblock %}
