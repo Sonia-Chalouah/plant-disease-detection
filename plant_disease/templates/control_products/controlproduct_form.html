@@ -1,0 +1,8 @@
+<!-- control_products/controlproduct_form.html -->
+<h1>{% if form.instance.pk %}Modifier le Produit de Contrôle{% else %}Créer un Produit de Contrôle{% endif %}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+</form>
+<a href="{% url 'controlproduct-list' %}">Retour à la liste</a>

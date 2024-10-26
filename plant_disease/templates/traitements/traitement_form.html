@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{% if traitement %}Mettre à jour le traitement{% else %}Créer un traitement{% endif %}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sauvegarder</button>
+  </form>
+  <a href="{% url 'traitement-list' %}">Annuler</a>
+{% endblock %}
