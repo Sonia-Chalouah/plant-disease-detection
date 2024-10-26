@@ -1,0 +1,17 @@
+<!-- control_products/controlproduct_detail.html -->
+<h1>Détails du Produit de Contrôle: {{ control_product.nom }}</h1>
+<p>Type : {{ control_product.type }}</p>
+<p>Description : {{ control_product.description }}</p>
+<p>Méthode d'Application : {{ control_product.méthode_application }}</p>
+<p>Efficacité : {{ control_product.efficacité }}%</p>
+
+<h2>Ravageurs ciblés</h2>
+<ul>
+    {% for pest in control_product.pests.all %}
+        <li>{{ pest.nom }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'controlproduct-update' control_product.pk %}">Modifier</a>
+<a href="{% url 'controlproduct-delete' control_product.pk %}">Supprimer</a>
+<a href="{% url 'controlproduct-list' %}">Retour à la liste</a>
