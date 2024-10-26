@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Liste des traitements</h2>
+  <ul>
+    {% for traitement in traitements %}
+      <li>
+        <a href="{% url 'traitement-detail' traitement.pk %}">
+          {{ traitement.nom }} - {{ traitement.méthode }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'traitement-create' %}">Créer un nouveau traitement</a>
+{% endblock %}
