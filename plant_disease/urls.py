@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from  plant_disease.view import TypeView, plantView, MaladieView, pestView , TraitementView
+from  plant_disease.view import TypeView, plantView, MaladieView, pestView , TraitementView, causeView 
 
 from .views import dashboard_view
 from django.conf import settings
@@ -48,11 +48,21 @@ urlpatterns = [
     path('maladies/<int:pk>/delete/', MaladieView.MaladieDeleteView.as_view(), name='maladie-delete'),
     path('maladies/', MaladieView.MaladieListView.as_view(), name='maladie-list'),
 
+
+      # Cause URLs
+
+     path('causes_maladie/', causeView.CauseMaladieListView.as_view(), name='cause_maladie-list'),
+    path('causes_maladie/<int:pk>/', causeView.CauseMaladieDetailView.as_view(), name='cause_maladie-detail'),
+    path('causes_maladie/create/', causeView.CauseMaladieCreateView.as_view(), name='cause_maladie-create'),
+    path('causes_maladie/<int:pk>/update/', causeView.CauseMaladieUpdateView.as_view(), name='cause_maladie-update'),
+    path('causes_maladie/<int:pk>/delete/', causeView.CauseMaladieDeleteView.as_view(), name='cause_maladie-delete'),
+
     path('traitements/', TraitementView.TraitementListView.as_view(), name='traitement-list'),
     path('traitements/<int:pk>/', TraitementView.TraitementDetailView.as_view(), name='traitement-detail'),
     path('traitements/create/', TraitementView.TraitementCreateView.as_view(), name='traitement-create'),
     path('traitements/update/<int:pk>/', TraitementView.TraitementUpdateView.as_view(), name='traitement-update'),
     path('traitements/delete/<int:pk>/', TraitementView.TraitementDeleteView.as_view(), name='traitement-delete'),
+
 
 ]
 
