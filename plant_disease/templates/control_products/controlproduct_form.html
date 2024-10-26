@@ -1,4 +1,4 @@
-<!-- control_products/controlproduct_form.html -->
+{% include "../navbackoffice.html" %}
 <h1>{% if form.instance.pk %}Modifier le Produit de Contrôle{% else %}Créer un Produit de Contrôle{% endif %}</h1>
 <form method="post">
     {% csrf_token %}

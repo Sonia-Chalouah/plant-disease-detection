@@ -1,0 +1,142 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": [
+          "Salut",
+          "Hey",
+          "Bonjour",
+          "Bonjour (matin)",
+          "Bon après-midi",
+          "Bonsoir"
+        ],
+        "responses": [
+          "Bonjour ! Bienvenue au Gym. Comment puis-je vous aider aujourd'hui ?",
+          "Salut ! Comment puis-je vous aider avec vos objectifs de fitness ?",
+          "Hey ! Comment puis-je vous assister avec nos services de gym ?",
+          "Bonjour ! Comment puis-je soutenir votre parcours de fitness aujourd'hui ?",
+          "Bon après-midi ! Comment puis-je vous aider avec votre entraînement ?",
+          "Bonsoir ! Faites-moi savoir comment je peux vous aider avec vos besoins en fitness."
+        ]
+      },
+      {
+        "tag": "apple_diseases",
+        "patterns": [
+          "Quelles sont les maladies de la pomme ?",
+          "Parle-moi des maladies des pommiers."
+        ],
+        "responses": [
+          "Voici quelques maladies courantes des pommiers :",
+          "Les maladies des pommiers incluent l'Apple Scab, le Black Rot, et le Cedar Apple Rust."
+        ],
+        "details": {
+          "Apple Scab": {
+            "Cause": [
+              "Apple scab overwinters primarily in fallen leaves and in the soil.",
+              "Disease development is favored by wet, cool weather that generally occurs in spring and early summer.",
+              "Fungal spores are carried by wind, rain, or splashing water to flowers, leaves, or fruit. Newly opening apple leaves are extremely susceptible to infection during damp conditions."
+            ],
+            "Treatment": [
+              "Choose resistant varieties when possible.",
+              "Rake under trees and destroy infected leaves to reduce fungal spores.",
+              "Water in the evening or early morning hours to give leaves time to dry before infection occurs.",
+              "Spread a 3- to 6-inch layer of compost under trees to prevent splash dispersal of fungal spores."
+            ]
+          },
+          "Black Rot": {
+            "Cause": [
+              "Caused by the fungus Diplodia seriata (syn Botryosphaeria obtusa).",
+              "The fungus infects dead tissue and living trunks, branches, leaves, and fruits, spreading in wet weather."
+            ],
+            "Treatment": [
+              "Prune out dead or diseased branches.",
+              "Remove infected plant material from the area.",
+              "Be sure to remove the stumps of any apple trees you cut down to eliminate potential sources of spores."
+            ]
+          },
+          "Cedar Apple Rust": {
+            "Cause": [
+              "Cedar apple rust (Gymnosporangium juniperi-virginianae) depends on both apple trees and Eastern red cedar.",
+              "The pathogen’s spores develop on the juniper as a reddish-brown gall."
+            ],
+            "Treatment": [
+              "Cut juniper galls if there aren’t too many of them nearby.",
+              "Prune branches about 4-6 inches below the galls to reduce infection risk."
+            ]
+          }
+        }
+      },
+      {
+        "tag": "blueberry_diseases",
+        "patterns": [
+          "Quelles sont les maladies des bleuets ?",
+          "Parle-moi des maladies des bleuets."
+        ],
+        "responses": [
+          "Les bleuets peuvent être affectés par le Powdery Mildew.",
+          "Voici des informations sur le Powdery Mildew sur les bleuets."
+        ],
+        "details": {
+          "Powdery Mildew": {
+            "Cause": [
+              "Caused by the fungus Erysiphe vaccinii, which infects leaves, buds, and fruit.",
+              "The disease thrives in warm, dry conditions and can spread rapidly."
+            ],
+            "Treatment": [
+              "Remove infected plant material and debris from the area.",
+              "Ensure good air circulation around plants by spacing them appropriately.",
+              "Use fungicides if necessary, following recommended guidelines."
+            ]
+          }
+        }
+      },
+      {
+        "tag": "cherry_diseases",
+        "patterns": [
+          "Quelles sont les maladies des cerisiers ?",
+          "Parle-moi des maladies des cerisiers."
+        ],
+        "responses": [
+          "Les cerisiers peuvent souffrir de Powdery Mildew.",
+          "Voici des détails sur le Powdery Mildew sur les cerisiers."
+        ],
+        "details": {
+          "Powdery Mildew": {
+            "Cause": [
+              "Caused by the fungus Podosphaera clandestina, which infects young, expanding leaves but can also affect buds, fruit, and stems.",
+              "The fungus overwinters on dead leaves and produces spores that spread in the orchard."
+            ],
+            "Treatment": [
+              "Remove and destroy sucker shoots.",
+              "Avoid wetting developing fruit and leaves during irrigation.",
+              "Promote good air circulation through pruning and nitrogen management."
+            ]
+          }
+        }
+      },
+      {
+        "tag": "corn_diseases",
+        "patterns": [
+          "Quelles sont les maladies du maïs ?",
+          "Parle-moi des maladies du maïs."
+        ],
+        "responses": [
+          "Le maïs peut être affecté par Grey Leaf Spot.",
+          "Voici des informations sur le Grey Leaf Spot du maïs."
+        ],
+        "details": {
+          "Grey Leaf Spot": {
+            "Cause": [
+              "Gray leaf spot lesions on corn hinder photosynthetic activity.",
+              "The disease is particularly damaging around pollination time and can mobilize carbohydrates from the stalk."
+            ],
+            "Treatment": [
+              "Reduce disease growth by limiting secondary disease cycles.",
+              "Protect leaf area from damage until after corn grain formation.",
+              "Be aware of high-risk factors like susceptible hybrid and field history of severe disease."
+            ]
+          }
+        }
+      }
+    ]
+  }

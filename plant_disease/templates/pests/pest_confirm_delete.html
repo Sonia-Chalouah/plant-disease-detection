@@ -1,11 +1,23 @@
-<!-- templates/pests/pest_confirm_delete.html -->
+
+
+{% include 'navbackoffice.html' %}
+
+
 {% block content %}
-  <h1>Supprimer le ravageur : {{ pest.nom }}</h1>
-  <p>Êtes-vous sûr de vouloir supprimer ce ravageur ? Cette action est irréversible.</p>
-  
-  <form method="POST">
-      {% csrf_token %}
-      <button type="submit">Confirmer</button>
-      <a href="{% url 'pest-list' %}">Annuler</a>
-  </form>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="text-center text-danger">Supprimer {{ pest.nom }} ?</h1>
+      <p class="text-center">Êtes-vous sûr de vouloir supprimer ce ravageur ? Cette action est irréversible.</p>
+      <form method="POST" class="text-center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
+        <a href="{%url 'pest-list' %}" class="btn btn-secondary">Annuler</a>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
+
+
+

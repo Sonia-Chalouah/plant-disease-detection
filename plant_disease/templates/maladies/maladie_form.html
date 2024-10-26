@@ -1,12 +1,32 @@
 
-{% block content %}
-  <h1>{% if form.instance.pk %}Modifier{% else %}Créer{% endif %} une Maladie</h1>
-  
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Soumettre</button>
-  </form>
 
-  <a href="{% url 'maladie-list' %}">Annuler</a>
+
+
+{% include "../navbackoffice.html" %}
+
+
+
+
+{% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="text-center">{% if form.instance.pk %}Modifier{% else %}Créer{% endif %} une Maladie</h1>
+     
+      <form method="POST" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+          {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
+
+
+ 
+
+
+

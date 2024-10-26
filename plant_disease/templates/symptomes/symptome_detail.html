@@ -1,0 +1,16 @@
+{% include 'navbackoffice.html' %}
+
+<div class="container">
+    <h1>Détails du Symptôme</h1>
+    
+    <h2>{{ symptome.nom }}</h2>
+    
+    <p><strong>Description:</strong> {{ symptome.description }}</p>
+    <p><strong>Gravité:</strong> {{ symptome.gravite }}</p>
+    
+    <a href="{% url 'symptome-update' symptome.id %}" class="btn btn-warning">Modifier</a>
+    <a href="{% url 'symptome-list' %}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+
+<!-- Include Bootstrap CSS if not already included -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

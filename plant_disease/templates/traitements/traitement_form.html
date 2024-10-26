@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
 
+{% include "../navbackoffice.html" %}
 {% block content %}
   <h2>{% if traitement %}Mettre à jour le traitement{% else %}Créer un traitement{% endif %}</h2>
   <form method="post">

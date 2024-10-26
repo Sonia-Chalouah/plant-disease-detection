@@ -1,13 +1,39 @@
 
 
+{% include "../navbackoffice.html" %}
+
+
+
+
 {% block content %}
-  <h1>Liste des types de plantes</h1>
-  <a href="{% url 'typePlantes-create' %}">Ajouter une nouvelle plante</a>
-  <ul>
-    {% for plante in plantes %}
-      <li>
-        <a href="{% url 'typePlantes-detail' plante.pk %}">{{ plante.nom }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+
+
+
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="text-center">Liste des Types de Plantes</h1>
+      <div class="text-center my-3">
+        <a href="/typePlantes/create/" class="btn btn-success">
+          Ajouter une nouvelle plante
+        </a>
+      </div>
+      <ul class="list-group">
+        {% for plante in plantes %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="/typePlantes/{{ plante.pk }} "class="text-decoration-none">
+             
+              {{ plante.nom }}
+            </a>
+            <span class="badge bg-primary rounded-pill"></span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
 {% endblock %}
+
+
+
