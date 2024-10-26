@@ -1,0 +1,8 @@
+{% block content %}
+<h2>{{ cause_maladie.nom }}</h2>
+<p>Description: {{ cause_maladie.description }}</p>
+<p>Type: {{ cause_maladie.type }}</p>
+<a href="{% url 'cause_maladie-update' cause_maladie.pk %}">Modifier</a>
+<a href="{% url 'cause_maladie-delete' cause_maladie.pk %}">Supprimer</a>
+<a href="{% url 'cause_maladie-list' %}">Retour à la liste</a>
+{% endblock %}

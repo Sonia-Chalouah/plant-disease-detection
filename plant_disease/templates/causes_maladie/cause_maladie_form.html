@@ -1,0 +1,9 @@
+{% block content %}
+<h2>{% if object %}Modifier{% else %}Ajouter{% endif %} une Cause de Maladie</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if object %}Mettre à jour{% else %}Créer{% endif %}</button>
+</form>
+<a href="{% url 'cause_maladie-list' %}">Annuler</a>
+{% endblock %}
