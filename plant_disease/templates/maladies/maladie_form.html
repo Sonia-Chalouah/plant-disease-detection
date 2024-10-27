@@ -1,32 +1,58 @@
+{% include 'navbackoffice.html' %}
 
-
-
-
-{% include "../navbackoffice.html" %}
-
-
-
-
-{% block content %}
 <div class="container my-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <h1 class="text-center">{% if form.instance.pk %}Modifier{% else %}Créer{% endif %} une Maladie</h1>
-     
-      <form method="POST" enctype="multipart/form-data" class="mt-4">
-        {% csrf_token %}
-        <div class="mb-3">
-          {{ form.as_p }}
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
-      </form>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h1 class="text-center">{% if form.instance.pk %}Modifier{% else %}Créer{% endif %} une Maladie</h1>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Nom Field -->
+            <div class="form-group">
+                <label for="id_nom">Nom:</label>
+                <input type="text" name="nom" class="form-control" id="id_nom" value="{{ form.nom.value|default:'' }}" required>
+            </div>
+            
+            <!-- Description Field -->
+            <div class="form-group">
+                <label for="id_description">Description:</label>
+                <textarea name="description" class="form-control" id="id_description" required>{{ form.description.value|default:'' }}</textarea>
+            </div>
+            
+            <!-- Type Field -->
+            <div class="form-group">
+                <label for="id_type">Type:</label>
+                <select name="type" class="form-control" id="id_type" required>
+                    {% for choice_value, choice_label in form.type.field.choices %}
+                        <option value="{{ choice_value }}" {% if form.type.value == choice_value %}selected{% endif %}>
+                            {{ choice_label }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- Plantes Field (Multi-select) -->
+            <div class="form-group">
+                <label for="id_plantes">Plantes affectées:</label>
+                <select name="plantes" class="form-control" id="id_plantes" multiple>
+                    {% for plante in form.plantes.field.queryset %}
+                        <option value="{{ plante.pk }}" {% if plante.pk in form.plantes.value %}selected{% endif %}>
+                            {{ plante.nom }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Submit and Cancel Buttons -->
+            <button type="submit" class="btn btn-primary">
+                {% if form.instance.pk %}Mettre à jour{% else %}Ajouter{% endif %}
+            </button>
+            <a href="{% url 'maladie-list' %}" class="btn btn-secondary">Annuler</a>
+        </form>
     </div>
-  </div>
 </div>
-{% endblock %}
+</div>
 
-
- 
-
-
-
+<!-- Include Bootstrap CSS if not already included -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

@@ -2,40 +2,22 @@
 
 {% include 'navbackoffice.html' %}
 
-
-{% block content %}
 <div class="container my-5">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <h1 class="text-center">{{ pest.nom }}</h1>
-      <p class="lead text-center">{{ pest.description }}</p>
-      <p class="lead text-center">{{ pest.get_type_display }}</p>
-     
-      {% if plante.image %}
-        <img src="{{ pest.image.url }}" alt="{{ pest.nom }}" class="img-fluid mb-3 d-block mx-auto">
-      {% endif %}
-       <!-- Affichage des plantes associées -->
-  <p><strong>Plantes affectées :</strong></p>
-  <ul>
-    {% for plante in pest.plantes.all %}
-      <li>{{ plante.nom }}</li> <!-- Affiche le nom de chaque plante liée -->
-    {% empty %}
-      <li>Aucune plante associée</li>
-    {% endfor %}
-  </ul>
-
-
-     
-      <div class="text-center">
-        <div class="btn-group" role="group" aria-label="Actions">
-          <a href="/pests/{{ pest.pk }}/update/" class="btn btn-primary">Modifier</a>
-          <a href="/pests/{{ pest.pk }}/delete/" class="btn btn-danger">Supprimer</a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+    <h1>Détails de Ravageur</h1>
+    
+    <h2 ><strong>Nom:</strong> {{ pest.nom }}</h2>
+    <p ><strong>Description:</strong> {{ pest.description }}</p>
+    <p ><strong>Type:</strong> {{ pest.get_type_display }}</p>
+   
+    {% if pest.image %}
+    <img src="{{ pest.image.url }}" alt="{{ pest.nom }}" class="img-fluid mb-3 d-block ">
+    {% endif %}
+    <a href="/pests/{{ pest.pk }}/update/" class="btn btn-primary">Modifier</a>
+    <a href="/pests/" class="btn btn-secondary">Retour à la liste</a>
 </div>
-{% endblock %}
-
-
-
+    </div>
+</div>
+<!-- Include Bootstrap CSS if not already included -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

@@ -1,39 +1,22 @@
-
-
-
-
-
-
 {% include 'navbackoffice.html' %}
 
-
-{% block content %}
 <div class="container my-5">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <h1 class="text-center">{{ maladie.nom }}</h1>
-      <p class="lead text-center">{{ maladie.description }}</p>
-      <p class="lead text-center">{{ maladie.type }}</p>
-      <h3>Plantes Associées:</h3>
-      <ul>
-        {% for plante in maladie.plantes.all %}
-          <li>{{ plante.nom }}</li>
-        {% endfor %}
-      </ul>
-   
-     
-      <div class="text-center">
-        <div class="btn-group" role="group" aria-label="Actions">
-          <a href="/maladies/{{ maladie.pk }}/update/" class="btn btn-primary">Modifier</a>
-          <a href="/maladies/{{ maladie.pk }}/delete/" class="btn btn-danger">Supprimer</a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+    <h1>Détails du Type Plante</h1>
+    <h2><strong>Nom:</strong> {{ maladie.nom }}</h2>
+    <p ><strong>Description:</strong> {{ maladie.description }}</p>
+    <p ><strong>Type:</strong> {{ maladie.type }}</p>
+    <h3>Plantes Associées:</h3>
+    <ul>
+      {% for plante in maladie.plantes.all %}
+        <li>{{ plante.nom }}</li>
+      {% endfor %}
+    </ul>
+    <a href="/maladies/{{ plante.pk }}/update/" class="btn btn-primary">Modifier</a>
+    <a href="/maladies/" class="btn btn-secondary">Retour à la liste</a>
 </div>
-
-
-{% endblock %}
-
-
-
+    </div>
+</div>
+<!-- Include Bootstrap CSS if not already included -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

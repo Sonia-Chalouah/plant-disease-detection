@@ -1,51 +1,44 @@
-{% include "../navbackoffice.html" %}
 
+{% include 'navbackoffice.html' %}
 
-{% block content %}
 <div class="container my-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <h1 class="text-center">
-        {% if plante %}Modifier la plante{% else %}Ajouter une nouvelle plante{% endif %}
-      </h1>
-     
-      <form method="POST" enctype="multipart/form-data" class="mt-4">
-        {% csrf_token %}
-       
-        <!-- Plant Name Field -->
-        <div class="form-group mb-3">
-          <label for="id_nom" class="form-label">Nom de la plante</label>
-          {{ form.nom }}
-          <small class="form-text text-muted">Enter the name of the plant.</small>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center">{% if plante %}Modifier{% else %}Ajouter{% endif %} une Plante</h1>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Plant Name Field -->
+                <div class="form-group">
+                    <label for="id_nom">Nom:</label>
+                    <input type="text" name="nom" class="form-control" id="id_nom" value="{{ plante.nom|default:'' }}" required>
+                </div>
+
+                <!-- Description Field -->
+                <div class="form-group">
+                    <label for="id_description">Description:</label>
+                    <textarea name="description" class="form-control" id="id_description" required>{{ plante.description|default:'' }}</textarea>
+                </div>
+
+                <!-- Image Upload Field -->
+                <div class="form-group">
+                    <label for="id_image">Image:</label>
+                    <input type="file" name="image" class="form-control-file" id="id_image">
+                </div>
+
+                <!-- Save and Cancel Buttons -->
+                <button type="submit" class="btn btn-primary mt-3">
+                    {% if plante %}Mettre à jour{% else %}Ajouter{% endif %}
+                </button>
+                <a href="{% url 'plante-list' %}" class="btn btn-secondary mt-3">Annuler</a>
+            </form>
         </div>
-
-
-        <!-- Description Field with Generate Button -->
-        <div class="form-group mb-3">
-          <label for="id_description" class="form-label">Description de la plante</label>
-          {{ form.description }}
-          <small class="form-text text-muted">A brief summary of the plant.</small>
-        </div>
-       
-        <!-- Generate Description Button -->
-        <button type="button" class="btn btn-secondary mb-3" id="generate-description-btn">
-          Generate Description
-        </button>
-
-
-        <!-- Image Upload Field -->
-        <div class="form-group mb-3">
-          <label for="id_image" class="form-label">Upload Image</label>
-          {{ form.image }}
-        </div>
-
-
-        <!-- Save Button -->
-        <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
-      </form>
     </div>
-  </div>
 </div>
+
+<!-- Include Bootstrap CSS if not already included -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 
 <script>
@@ -86,7 +79,7 @@
 
 
 </script>
-{% endblock %}
+
 
 
 

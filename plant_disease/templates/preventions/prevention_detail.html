@@ -1,8 +1,10 @@
 {% include "../navbackoffice.html" %}
-<div class="container">
-    <h2>Détails de la Mesure Préventive</h2>
+<div class="container my-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+    <h1>Détails de la Mesure Préventive</h1>
+    <h2><strong>Nom:</strong> {{ prevention.nom }}</h2>
     
-    <p><strong>Nom:</strong> {{ prevention.nom }}</p>
     <p><strong>Description:</strong> {{ prevention.description }}</p>
     <p><strong>Symptômes Connexes:</strong> 
         {% if prevention.symptômes_connexes %}

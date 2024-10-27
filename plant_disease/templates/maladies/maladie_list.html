@@ -1,39 +1,65 @@
-
-
-{% include "../navbackoffice.html" %}
-
-
-
-
-{% block content %}
-
-
-
+{% include 'navbackoffice.html' %}
 
 <div class="container my-5">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <h1 class="text-center">Liste des Maladies</h1>
-      <div class="text-center my-3">
-        <a href="/maladies/create/" class="btn btn-success">
-          Créer une nouvelle maladie
-        </a>
-      </div>
-      <ul class="list-group">
-        {% for maladie in maladies %}
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="/maladies/{{ maladie.pk }} "class="text-decoration-none">
-             
-              {{ maladie.nom }}
-            </a>
-            <span class="badge bg-primary rounded-pill"></span>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+    <h1>Liste des Maladies</h1>
+    <a href="/maladies/create/" class="btn btn-success mb-3">Créer une nouvelle maladie</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for maladie in maladies %}
+            <tr>
+                <td>{{ maladie.id }}</td>
+                <td>{{ maladie.nom }}</td>
+                <td>{{ maladie.description }}</td>
+                <td>{{ maladie.type }}</td>
+                <td>
+                  <a href="/maladies/{{ maladie.pk }}/" class="btn btn-info">Voir</a>
+                    <a href="/maladies/{{ maladie.pk }}/update/" class="btn btn-warning">Modifier</a>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ maladie.id }}">Supprimer</button>
+                </td>
+            </tr>
+
+            <!-- Modal for delete confirmation -->
+            <div class="modal fade" id="deleteModal{{ maladie.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Confirmer la suppression</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Êtes-vous sûr de vouloir supprimer le Type maladie "{{ maladie.nom }}" ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <form action="{% url 'maladie-delete' maladie.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
-{% endblock %}
-
-
-
+    </div>
+</div>
+<!-- Include Bootstrap JS and CSS if not already included -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

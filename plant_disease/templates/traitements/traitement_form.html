@@ -1,10 +1,46 @@
+{% include 'navbackoffice.html' %}
 
-{% block content %}
-  <h2>{% if traitement %}Mettre à jour le traitement{% else %}Créer un traitement{% endif %}</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sauvegarder</button>
-  </form>
-  <a href="{% url 'traitement-list' %}">Annuler</a>
-{% endblock %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center">{% if traitement %}Modifier{% else %}Ajouter{% endif %} un Traitement</h1>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="id_nom">Nom:</label>
+                    <input type="text" name="nom" class="form-control" id="id_nom" value="{{ traitement.nom|default:'' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_description">Description:</label>
+                    <textarea name="description" class="form-control" id="id_description" required>{{ traitement.description|default:'' }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_méthode">Méthode:</label>
+                    <textarea name="méthode" class="form-control" id="id_méthode" required>{{ traitement.méthode|default:'' }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_maladie">Maladie (facultatif):</label>
+                    <select name="maladie" class="form-control" id="id_maladie">
+                        <option value="" {% if not traitement.maladie %}selected{% endif %}>Aucune</option>
+                        {% for maladie in maladies %}
+                            <option value="{{ maladie.id }}" {% if traitement.maladie == maladie %}selected{% endif %}>{{ maladie.nom }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    {% if traitement %}Mettre à jour{% else %}Ajouter{% endif %}
+                </button>
+                <a href="{% url 'traitement-list' %}" class="btn btn-secondary">Annuler</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap CSS if not already included -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

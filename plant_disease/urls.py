@@ -54,7 +54,7 @@ urlpatterns = [
 
       # Cause URLs
 
-     path('causes_maladie/', causeView.CauseMaladieListView.as_view(), name='cause_maladie-list'),
+    path('causes_maladie/', causeView.CauseMaladieListView.as_view(), name='cause_maladie-list'),
     path('causes_maladie/<int:pk>/', causeView.CauseMaladieDetailView.as_view(), name='cause_maladie-detail'),
     path('causes_maladie/create/', causeView.CauseMaladieCreateView.as_view(), name='cause_maladie-create'),
     path('causes_maladie/<int:pk>/update/', causeView.CauseMaladieUpdateView.as_view(), name='cause_maladie-update'),
@@ -65,14 +65,14 @@ urlpatterns = [
     path('traitements/create/', TraitementView.TraitementCreateView.as_view(), name='traitement-create'),
     path('traitements/update/<int:pk>/', TraitementView.TraitementUpdateView.as_view(), name='traitement-update'),
     path('traitements/delete/<int:pk>/', TraitementView.TraitementDeleteView.as_view(), name='traitement-delete'),
-
- path('Diagnostic/', DiagnosticView.DiagnosticListView.as_view(), name='diagnostic-list'),
+     # URLs for Diagnostic
+    path('diagnostics/', DiagnosticView.DiagnosticListView.as_view(), name='diagnostic-list'),
     path('diagnostic/<int:pk>/', DiagnosticView.DiagnosticDetailView.as_view(), name='diagnostic-detail'),
     path('diagnostic/create/', DiagnosticView.DiagnosticCreateView.as_view(), name='diagnostic-create'),
     path('diagnostic/<int:pk>/update/', DiagnosticView.DiagnosticUpdateView.as_view(), name='diagnostic-update'),
     path('diagnostic/<int:pk>/delete/', DiagnosticView.DiagnosticDeleteView.as_view(), name='diagnostic-delete'),
      # URLs for Symptôme
-   path('symptomes/', symptomeView.SymptomeListView.as_view(), name='symptome-list'),  # Corrected: Use .as_view()
+    path('symptomes/', symptomeView.SymptomeListView.as_view(), name='symptome-list'),  # Corrected: Use .as_view()
     path('symptomes/<int:pk>/', symptomeView.SymptomeDetailView.as_view(), name='symptome-detail'),  # Detail view
     path('symptomes/add/', symptomeView.SymptomeCreateView.as_view(), name='symptome-create'),  # Create view
     path('symptomes/<int:pk>/edit/', symptomeView.SymptomeUpdateView.as_view(), name='symptome-update'),  # Update view

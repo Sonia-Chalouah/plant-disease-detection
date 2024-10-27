@@ -1,8 +1,10 @@
 {% include 'navbackoffice.html' %}
 
-<div class="container">
+<div class="container my-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
     <h1>Liste des Symptômes</h1>
-    <a href="{% url 'symptome-create' %}" class="btn btn-primary">Ajouter un Symptôme</a>
+    <a href="{% url 'symptome-create' %}"class="btn btn-success mb-3">Ajouter un Symptôme</a>
     <table class="table">
         <thead>
             <tr>
@@ -54,7 +56,8 @@
         </tbody>
     </table>
 </div>
-
+    </div>
+</div>
 <!-- Include Bootstrap JS and CSS if not already included -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
