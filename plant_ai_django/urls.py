@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('plant_disease.urls')),  # Include the app's URLs
     path('dashboard/', include('plant_disease.urls')),  # Include the app's URLs
-    path('backoffice/', include('plant_disease.urls')),  # Include the app's URLs
+    path('/', include('plant_disease.urls')),  # Include the app's URLs
 
 
 
