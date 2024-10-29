@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ maladie.id }}</td>
                 <td>{{ maladie.nom }}</td>
-                <td>{{ maladie.description }}</td>
+                <td>{{ maladie.description |truncatewords:20 }}</td>
                 <td>{{ maladie.type }}</td>
                 <td>
                   <a href="/maladies/{{ maladie.pk }}/" class="btn btn-info">Voir</a>

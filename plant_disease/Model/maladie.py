@@ -1,3 +1,4 @@
+# models.py (for Maladie)
 from django.db import models
 from plant_disease.Model.plant import Plante  # Ensure this import is correct
 

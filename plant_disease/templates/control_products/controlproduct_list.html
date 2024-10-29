@@ -10,7 +10,6 @@
             <tr>
                 <th>ID</th>
                 <th>Nom</th>
-                <th>Description</th>
                 <th>type</th>
                 <th>Méthode d'application</th>
                 <th>Efficacité</th>
@@ -22,9 +21,8 @@
             <tr>
                 <td>{{ control_product.id }}</td>
                 <td>{{ control_product.nom }}</td>
-                <td>{{ control_product.description }}</td>
                 <td>{{ control_product.type }}</td>
-                <td>{{ control_product.méthode_application }}</td>
+                <td>{{ control_product.méthode_application |truncatewords:10 }}</td>
                 <td>{{ control_product.efficacité }}</td>
                 <td>
                   <a href="/control-products/{{ control_product.pk }}/" class="btn btn-info">Voir</a>

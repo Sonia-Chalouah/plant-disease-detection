@@ -21,7 +21,7 @@
             <tr>
                 <td>{{ cause.id }}</td>
                 <td>{{ cause.nom }}</td>
-                <td>{{ cause.description }}</td>
+                <td>{{ cause.description |truncatewords:10 }}</td>
                 <td>{{ cause.type }}</td>
                 <td>
                   <a href="/causes_maladie/{{ cause.pk }}/" class="btn btn-info">Voir</a>

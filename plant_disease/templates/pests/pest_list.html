@@ -21,13 +21,19 @@
             <tr>
                 <td>{{ pest.id }}</td>
                 <td>{{ pest.nom }}</td>
-                <td>{{ pest.description }}</td>
+                <td>{{ pest.description |truncatewords:10 }}</td>
                 <td>{{ pest.type }}</td>
                 <td>
-                  {% if pest.image %}
-                  <img src="{{ pest.image.url }}" alt="{{ pest.nom }}" class="img-fluid mb-3 d-block mx-auto">
-                  {% endif %}
-                </td>
+                    {% if pest.image %}
+                    <img
+                      src="{{ pest.image.url }}"
+                      alt="{{ pest.nom }}"
+                      width="80"
+                      height=""
+                      class="img-fluid mb-3 d-block mx-auto"
+                    />
+                    {% endif %}
+                  </td>
                 <td>
                   <a href="/pests/{{ pest.pk }}/" class="btn btn-info">Voir</a>
                     <a href="/pests/{{ pest.pk }}/update/" class="btn btn-warning">Modifier</a>

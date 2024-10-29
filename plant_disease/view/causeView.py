@@ -1,8 +1,18 @@
-# views.py
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django import forms
+from plant_disease.Model.maladie import Maladie
 from plant_disease.Model.cause import CauseMaladie
 
+# Form for CauseMaladie
+class CauseMaladieForm(forms.ModelForm):
+    class Meta:
+        model = CauseMaladie
+        fields = ['nom', 'description', 'type', 'maladie']  # Include 'maladie' field
+
+        widgets = {
+            'maladie': forms.Select(attrs={'class': 'form-control'})  # Customize the Select widget
+        }
 
 # List view for Cause Maladie
 class CauseMaladieListView(ListView):
@@ -19,14 +29,14 @@ class CauseMaladieDetailView(DetailView):
 # Create view for Cause Maladie
 class CauseMaladieCreateView(CreateView):
     model = CauseMaladie
-    fields = ['nom', 'description', 'type']
+    form_class = CauseMaladieForm  # Use the custom form class
     template_name = 'causes_maladie/cause_maladie_form.html'
     success_url = reverse_lazy('cause_maladie-list')
 
 # Update view for Cause Maladie
 class CauseMaladieUpdateView(UpdateView):
     model = CauseMaladie
-    fields = ['nom', 'description', 'type']
+    form_class = CauseMaladieForm  # Use the custom form class
     template_name = 'causes_maladie/cause_maladie_form.html'
     success_url = reverse_lazy('cause_maladie-list')
 

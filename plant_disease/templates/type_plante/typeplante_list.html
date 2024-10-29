@@ -21,7 +21,7 @@
             <tr>
                 <td>{{ plante.id }}</td>
                 <td>{{ plante.nom }}</td>
-                <td>{{ plante.description }}</td>
+                <td>{{ plante.description |truncatewords:10 }}</td>
                 <td>
                   {% if plante.image %}
                   <img src="{{ plante.image.url }}" alt="{{ plante.nom }}" class="img-fluid mb-3 d-block mx-auto">

@@ -1,21 +1,24 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from plant_disease.Model.maladie import Maladie
+from plant_disease.Model.plant import Plante  # Ensure this import is correct
 
-# Liste des maladies FrontOffice(Read - List)
+# Liste des maladies FrontOffice (Read - List)
 class MaladieListFrontView(ListView):
     model = Maladie
-    template_name = 'maladies/Maladies.html'
+    template_name = 'maladies/maladies.html'
     context_object_name = 'maladies'
+
 # Liste des maladies (Read - List)
 class MaladieListView(ListView):
     model = Maladie
     template_name = 'maladies/maladie_list.html'
     context_object_name = 'maladies'
+
 class MaladieDetailfrontView(DetailView):
     model = Maladie
-    template_name = 'maladies/maladie_detailfront.html'  # This is the template we created
-    context_object_name = 'maladie'        # The object name to use in the template
+    template_name = 'maladies/maladie_detailfront.html'
+    context_object_name = 'maladie'
 
 # Détails d'une maladie (Read - Detail)
 class MaladieDetailView(DetailView):

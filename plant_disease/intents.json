@@ -1,142 +1,214 @@
 {
-    "intents": [
-      {
-        "tag": "greeting",
-        "patterns": [
-          "Salut",
-          "Hey",
-          "Bonjour",
-          "Bonjour (matin)",
-          "Bon après-midi",
-          "Bonsoir"
-        ],
-        "responses": [
-          "Bonjour ! Bienvenue au Gym. Comment puis-je vous aider aujourd'hui ?",
-          "Salut ! Comment puis-je vous aider avec vos objectifs de fitness ?",
-          "Hey ! Comment puis-je vous assister avec nos services de gym ?",
-          "Bonjour ! Comment puis-je soutenir votre parcours de fitness aujourd'hui ?",
-          "Bon après-midi ! Comment puis-je vous aider avec votre entraînement ?",
-          "Bonsoir ! Faites-moi savoir comment je peux vous aider avec vos besoins en fitness."
-        ]
-      },
-      {
-        "tag": "apple_diseases",
-        "patterns": [
-          "Quelles sont les maladies de la pomme ?",
-          "Parle-moi des maladies des pommiers."
-        ],
-        "responses": [
-          "Voici quelques maladies courantes des pommiers :",
-          "Les maladies des pommiers incluent l'Apple Scab, le Black Rot, et le Cedar Apple Rust."
-        ],
-        "details": {
-          "Apple Scab": {
-            "Cause": [
-              "Apple scab overwinters primarily in fallen leaves and in the soil.",
-              "Disease development is favored by wet, cool weather that generally occurs in spring and early summer.",
-              "Fungal spores are carried by wind, rain, or splashing water to flowers, leaves, or fruit. Newly opening apple leaves are extremely susceptible to infection during damp conditions."
-            ],
-            "Treatment": [
-              "Choose resistant varieties when possible.",
-              "Rake under trees and destroy infected leaves to reduce fungal spores.",
-              "Water in the evening or early morning hours to give leaves time to dry before infection occurs.",
-              "Spread a 3- to 6-inch layer of compost under trees to prevent splash dispersal of fungal spores."
-            ]
-          },
-          "Black Rot": {
-            "Cause": [
-              "Caused by the fungus Diplodia seriata (syn Botryosphaeria obtusa).",
-              "The fungus infects dead tissue and living trunks, branches, leaves, and fruits, spreading in wet weather."
-            ],
-            "Treatment": [
-              "Prune out dead or diseased branches.",
-              "Remove infected plant material from the area.",
-              "Be sure to remove the stumps of any apple trees you cut down to eliminate potential sources of spores."
-            ]
-          },
-          "Cedar Apple Rust": {
-            "Cause": [
-              "Cedar apple rust (Gymnosporangium juniperi-virginianae) depends on both apple trees and Eastern red cedar.",
-              "The pathogen’s spores develop on the juniper as a reddish-brown gall."
-            ],
-            "Treatment": [
-              "Cut juniper galls if there aren’t too many of them nearby.",
-              "Prune branches about 4-6 inches below the galls to reduce infection risk."
-            ]
-          }
-        }
-      },
-      {
-        "tag": "blueberry_diseases",
-        "patterns": [
-          "Quelles sont les maladies des bleuets ?",
-          "Parle-moi des maladies des bleuets."
-        ],
-        "responses": [
-          "Les bleuets peuvent être affectés par le Powdery Mildew.",
-          "Voici des informations sur le Powdery Mildew sur les bleuets."
-        ],
-        "details": {
-          "Powdery Mildew": {
-            "Cause": [
-              "Caused by the fungus Erysiphe vaccinii, which infects leaves, buds, and fruit.",
-              "The disease thrives in warm, dry conditions and can spread rapidly."
-            ],
-            "Treatment": [
-              "Remove infected plant material and debris from the area.",
-              "Ensure good air circulation around plants by spacing them appropriately.",
-              "Use fungicides if necessary, following recommended guidelines."
-            ]
-          }
-        }
-      },
-      {
-        "tag": "cherry_diseases",
-        "patterns": [
-          "Quelles sont les maladies des cerisiers ?",
-          "Parle-moi des maladies des cerisiers."
-        ],
-        "responses": [
-          "Les cerisiers peuvent souffrir de Powdery Mildew.",
-          "Voici des détails sur le Powdery Mildew sur les cerisiers."
-        ],
-        "details": {
-          "Powdery Mildew": {
-            "Cause": [
-              "Caused by the fungus Podosphaera clandestina, which infects young, expanding leaves but can also affect buds, fruit, and stems.",
-              "The fungus overwinters on dead leaves and produces spores that spread in the orchard."
-            ],
-            "Treatment": [
-              "Remove and destroy sucker shoots.",
-              "Avoid wetting developing fruit and leaves during irrigation.",
-              "Promote good air circulation through pruning and nitrogen management."
-            ]
-          }
-        }
-      },
-      {
-        "tag": "corn_diseases",
-        "patterns": [
-          "Quelles sont les maladies du maïs ?",
-          "Parle-moi des maladies du maïs."
-        ],
-        "responses": [
-          "Le maïs peut être affecté par Grey Leaf Spot.",
-          "Voici des informations sur le Grey Leaf Spot du maïs."
-        ],
-        "details": {
-          "Grey Leaf Spot": {
-            "Cause": [
-              "Gray leaf spot lesions on corn hinder photosynthetic activity.",
-              "The disease is particularly damaging around pollination time and can mobilize carbohydrates from the stalk."
-            ],
-            "Treatment": [
-              "Reduce disease growth by limiting secondary disease cycles.",
-              "Protect leaf area from damage until after corn grain formation.",
-              "Be aware of high-risk factors like susceptible hybrid and field history of severe disease."
-            ]
-          }
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Salut",
+        "Hey",
+        "Bonjour",
+        "Bonjour (matin)",
+        "Bon après-midi",
+        "Bonsoir"
+      ],
+      "responses": [
+        "Bonjour ! Bienvenue au Farm. Comment puis-je vous aider aujourd'hui ?",
+        "Salut ! Comment puis-je vous aider aujourd'hui ?",
+        "Bonjour ! Comment puis-je vous aider aujourd'hui ?"
+        
+      ]
+    },
+    {
+      "tag": "apple_diseases",
+      "patterns": [
+        "Quelles sont les maladies de la pomme ?",
+        "Parle-moi des maladies des pommiers.",
+        "Quels sont les causes des maladies de la pomme ?",
+        "Comment traiter les maladies de la pomme ?"
+      ],
+      "responses": [
+        "Voici quelques maladies courantes des pommiers : Apple Scab, Black Rot, et Cedar Apple Rust."
+      ],
+      "details": {
+        "Apple Scab": {
+          "cause": "Apple scab overwinter primarily in fallen leaves and in the soil. Les conditions humides favorisent son développement.",
+          "treatment": "Choisissez des variétés résistantes et ratissez sous les arbres pour détruire les feuilles infectées."
+        },
+        "Black Rot": {
+          "cause": "Caused by the fungus Diplodia seriata. Le champignon infecte les tissus morts et vivants, se propageant par temps humide.",
+          "treatment": "Taillez les branches mortes et retirez les matériaux végétaux infectés."
+        },
+        "Cedar Apple Rust": {
+          "cause": "Cedar apple rust dépend à la fois des pommiers et du cèdre rouge.",
+          "treatment": "Coupez les galles de genévrier et taillez les branches pour réduire le risque d'infection."
         }
       }
-    ]
-  }
+    },
+    {
+      "tag": "blueberry_diseases",
+      "patterns": [
+        "Quelles sont les maladies des bleuets ?",
+        "Parle-moi des maladies des bleuets.",
+        "Quels sont les causes des maladies des bleuets ?",
+        "Comment traiter les maladies des bleuets ?"
+      ],
+      "responses": [
+        "Les bleuets peuvent être affectés par le Powdery Mildew."
+      ],
+      "details": {
+        "Powdery Mildew": {
+          "cause": "Caused by the fungus Erysiphe vaccinii, qui infecte les feuilles et les fruits.",
+          "treatment": "Retirez les matériaux végétaux infectés et utilisez des fongicides si nécessaire."
+        }
+      }
+    },
+    {
+      "tag": "cherry_diseases",
+      "patterns": [
+        "Quelles sont les maladies des cerisiers ?",
+        "Parle-moi des maladies des cerisiers.",
+        "Quels sont les causes des maladies des cerisiers ?",
+        "Comment traiter les maladies des cerisiers ?"
+      ],
+      "responses": [
+        "Les cerisiers peuvent souffrir de Powdery Mildew."
+      ],
+      "details": {
+        "Powdery Mildew": {
+          "cause": "Caused by the fungus Podosphaera clandestina, qui infecte les jeunes feuilles.",
+          "treatment": "Enlevez les pousses et favorisez une bonne circulation d'air."
+        }
+      }
+    },
+    {
+      "tag": "corn_diseases",
+      "patterns": [
+        "Quelles sont les maladies du maïs ?",
+        "Parle-moi des maladies du maïs.",
+        "Quels sont les causes des maladies du maïs ?",
+        "Comment traiter les maladies du maïs ?"
+      ],
+      "responses": [
+        "Le maïs peut être affecté par Grey Leaf Spot."
+      ],
+      "details": {
+        "Grey Leaf Spot": {
+          "cause": "Les lésions du Grey Leaf Spot nuisent à l'activité photosynthétique du maïs.",
+          "treatment": "Protégez la surface des feuilles jusqu'à la formation des grains."
+        }
+      }
+    },
+    {
+      "tag": "tomato_diseases",
+      "patterns": [
+        "Quelles sont les maladies des tomates ?",
+        "Parle-moi des maladies des plants de tomate.",
+        "Quels sont les causes des maladies des tomates ?",
+        "Comment traiter les maladies des tomates ?"
+      ],
+      "responses": [
+        "Les tomates peuvent souffrir de plusieurs maladies, y compris le Mildiou et la Pourriture apicale."
+      ],
+      "details": {
+        "Mildiou": {
+          "cause": "Caused by the fungus Phytophthora infestans, qui se développe dans des conditions humides et fraîches.",
+          "treatment": "Utilisez des fongicides et assurez-vous d'une bonne circulation d'air autour des plants."
+        },
+        "Pourriture apicale": {
+          "cause": "Résulte d'un manque de calcium et d'irrigation irrégulière.",
+          "treatment": "Assurez-vous d'une irrigation constante et appliquez des suppléments de calcium."
+        }
+      }
+    },
+    {
+      "tag": "potato_diseases",
+      "patterns": [
+        "Quelles sont les maladies des pommes de terre ?",
+        "Parle-moi des maladies des plants de pomme de terre.",
+        "Quels sont les causes des maladies des pommes de terre ?",
+        "Comment traiter les maladies des pommes de terre ?"
+      ],
+      "responses": [
+        "Les pommes de terre peuvent être affectées par le Mildiou et la Gale."
+      ],
+      "details": {
+        "Mildiou": {
+          "cause": "Cause par le champignon Phytophthora infestans, favorisé par l'humidité.",
+          "treatment": "Appliquez des fongicides et évitez l'irrigation excessive."
+        },
+        "Gale": {
+          "cause": "Caused by a fungal infection, resulting in rough patches on the skin.",
+          "treatment": "Utilisez des variétés résistantes et assurez une bonne gestion de l'humidité."
+        }
+      }
+    },
+    {
+      "tag": "grape_diseases",
+      "patterns": [
+        "Quelles sont les maladies des raisins ?",
+        "Parle-moi des maladies des vignes.",
+        "Quels sont les causes des maladies des raisins ?",
+        "Comment traiter les maladies des raisins ?"
+      ],
+      "responses": [
+        "Les vignes peuvent être affectées par l'Oïdium et le Botrytis."
+      ],
+      "details": {
+        "Oïdium": {
+          "cause": "Caused by the fungus Erysiphe necator, qui se développe dans des conditions sèches.",
+          "treatment": "Appliquez des fongicides et assurez une bonne aération des plants."
+        },
+        "Botrytis": {
+          "cause": "Caused by Botrytis cinerea, favorisé par des conditions humides.",
+          "treatment": "Prunez les plants pour améliorer la circulation de l'air et retirez les grappes malades."
+        }
+      }
+    },
+    {
+      "tag": "cucumber_diseases",
+      "patterns": [
+        "Quelles sont les maladies des concombres ?",
+        "Parle-moi des maladies des plants de concombre.",
+        "Quels sont les causes des maladies des concombres ?",
+        "Comment traiter les maladies des concombres ?"
+      ],
+      "responses": [
+        "Les concombres peuvent souffrir de l'Oïdium et de la Pourriture des racines."
+      ],
+      "details": {
+        "Oïdium": {
+          "cause": "Caused by the fungus Sphaerotheca fuliginea, qui affecte les feuilles.",
+          "treatment": "Assurez une bonne circulation d'air et appliquez des fongicides."
+        },
+        "Pourriture des racines": {
+          "cause": "Due à un excès d'eau et à un drainage insuffisant.",
+          "treatment": "Améliorez le drainage et évitez d'arroser excessivement."
+        }
+      }
+    },
+    {
+      "tag": "pepper_diseases",
+      "patterns": [
+        "Quelles sont les maladies des poivrons ?",
+        "Parle-moi des maladies des plants de poivron.",
+        "Quels sont les causes des maladies des poivrons ?",
+        "Comment traiter les maladies des poivrons ?"
+      ],
+      "responses": [
+        "Les poivrons peuvent être affectés par la Pourriture des racines et le Mildiou."
+      ],
+      "details": {
+        "Pourriture des racines": {
+          "cause": "Caused by overwatering and poor drainage.",
+          "treatment": "Assurez-vous d'un bon drainage et ne pas trop arroser."
+        },
+        "Mildiou": {
+          "cause": "Caused by Phytophthora species, surtout dans des conditions humides.",
+          "treatment": "Utilisez des fongicides et améliorez la circulation d'air."
+        }
+      }
+    }
+  ]
+}
+
+
+

@@ -1,34 +1,42 @@
-<!-- Maladie Detail Start -->
-<div class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-lg">
-                <div class="card-body p-5">
-                    <!-- Maladie Title -->
-                    <h2 class="card-title text-primary text-center mb-4">{{ maladie.nom }}</h2>
-                    
-                    <!-- Maladie Type Badge -->
-                    <p class="text-center mb-4">
-                        <span class="badge bg-secondary">{{ maladie.type }}</span>
-                    </p>
+<script>
+    document.getElementById('generate-description-btn').addEventListener('click', function() {
+      const nom = document.getElementById('id_nom').value;
+  
+      if (nom.trim() === '') {
+          alert('Please enter the name of the plant (Nom de la plante).');
+          return;
+      }
+  
+      // AJAX call to generate description
+      fetch("/generate_description/", {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': '{{ csrf_token }}',
+          },
+          body: JSON.stringify({ nom: nom })
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+          if (data.description) {
+              document.getElementById('id_description').value = data.description;
+          } else {
+              alert('Error: Unable to generate description');
+          }
+      })
+      .catch(error => console.error('Error:', error));
+  });
+  </script>
 
-                    <!-- Maladie Description -->
-                    <p class="card-text">{{ maladie.description }}</p>
-                    
-                    <!-- Additional Details (Optional) -->
-                    {% if maladie.plantes.all %}
-                    <div class="mt-4">
-                        <h5 class="text-primary">Affects the following plants:</h5>
-                        <ul class="list-group list-group-flush">
-                            {% for plante in maladie.plantes.all %}
-                            <li class="list-group-item">{{ plante.nom }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Maladie Detail End -->
+
+
+
+
+
+ <!-- Button to Generate Description -->
+ <button type="button" id="generate-description-btn" class="btn btn-secondary mt-3">Générer Description</button>

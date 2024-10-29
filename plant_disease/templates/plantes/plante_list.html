@@ -21,7 +21,7 @@
             <tr>
                 <td>{{ plante.id }}</td>
                 <td>{{ plante.nom }}</td>
-                <td>{{ plante.description }}</td>
+                <td>{{ plante.description |truncatewords:10 }}</td>
                 <td>{{ plante.type_plante }}</td>
                 <td>
                   {% if plante.image %}
