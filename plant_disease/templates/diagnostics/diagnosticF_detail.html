@@ -1,4 +1,5 @@
 
+
 {% load static %}
 
 
@@ -8,10 +9,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>AgroFarm - DiagnisticsDetails</title>
+    <title>AgroFarm - Diagnostics Details</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="Details about diagnostics in AgroFarm" name="description">
 
 
     <!-- Favicon -->
@@ -19,8 +19,6 @@
 
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
 
 
@@ -44,58 +42,75 @@
 
 
     <style>
-        .traitement-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f3f4f6;
         }
-
-
-        .traitement-card {
+        .diagnostic-details {
             background-color: #ffffff;
-            border-radius: 15px;
+            border-radius: 10px;
+            padding: 30px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            margin-top: 40px;
             text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-            overflow: hidden;
         }
-
-
-        .traitement-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        }
-
-
-        .traitement-card h2 {
+        .diagnostic-details h1 {
             color: #28a745;
-            font-weight: 600;
-        }
-
-
-        .traitement-card p {
-            color: #555;
             margin-bottom: 15px;
         }
-
-
-        .details-button {
+        .diagnostic-details h3 {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+        .diagnostic-details p {
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .badge-notes {
             display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 15px;
+            font-weight: 600;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .back-button, .details-button {
             padding: 10px 20px;
             background-color: #28a745;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
-            font-weight: 500;
+            font-weight: 600;
         }
-
-
-        .details-button:hover {
+        .back-button:hover, .details-button:hover {
             background-color: #218838;
+        }
+        .modal-content {
+            border-radius: 10px;
+        }
+        .modal-header {
+            background-color: #28a745;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .modal-title {
+            font-size: 1.25rem;
+        }
+        .modal-body p {
+            color: #495057;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -109,36 +124,32 @@
     <!-- Spinner End -->
 
 
-    {% include 'navbar.html' %}  <!-- Include the navbar here -->
+    {% include 'navbar.html' %}
 
 
-    <div class="container mt-5">
-        <div class="traitement-details">
-            <h1>{{ diagnostic.traitement.nom }}</h1>
-            <h3>Description</h3>
-            <p>{{ diagnostic.traitement.description }}</p>
-            <h3>Méthode</h3>
+    <div class="container">
+        <div class="diagnostic-details">
+            <h1>Détails Diagnostic de cette plante</h1>
+            <h3>Plante</h3>
+            <p>{{ diagnostic.plante.nom }}</p>
+            <h3>Maladie</h3>
+            <p>{{ diagnostic.maladie.nom }}</p>
+            <h3>Traitement</h3>
             <p>{{ diagnostic.traitement.méthode }}</p>
-            {% if diagnostic.traitement.maladie %}
-                <h3>Associated Disease</h3>
-                <p>{{ diagnostic.traitement.maladie.nom }}</p>
-            {% endif %}
+            <h3>Date du Diagnostic</h3>
+            <p>{{ diagnostic.date_diagnostic }}</p>
 
 
-            <!-- Button to trigger the modal -->
-            <button type="button" class="btn btn-info mt-3" data-bs-toggle="modal" data-bs-target="#diagnosticModal">
-                Voir Détails du Diagnostic
-            </button>
-           
-            <a href="{% url 'diagnostic-list' %}" class="back-button">Back to List</a>
+            <h3>Notes</h3>
+            <span class="badge-notes">{{ diagnostic.notes }}</span>  <!-- Display notes as a badge -->
+
+
+            <div class="action-buttons">
+                <a href="{% url 'diagnosticF-list' %}" class="back-button">Retour à la liste</a>
+               
+            </div>
         </div>
     </div>
-
-
-    <!-- Modal for Diagnostic Details -->
- 
-
-
 
 
     {% include 'footer.html' %}
@@ -167,6 +178,107 @@
 
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////sonia//////////////////
+{% include 'navbackoffice.html' %}
+
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center">{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} un Produit de Contrôle</h1>
+
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+
+                <!-- Nom Field -->
+                <div class="form-group">
+                    <label for="id_nom">Nom:</label>
+                    <input type="text" name="nom" class="form-control" id="id_nom" value="{{ form.nom.value|default:'' }}" required>
+                </div>
+
+
+                <!-- Type Field -->
+                <div class="form-group">
+                    <label for="id_type">Type de Produit:</label>
+                    <select name="type" class="form-control" id="id_type" required>
+                        {% for choice_value, choice_label in form.type.field.choices %}
+                            <option value="{{ choice_value }}" {% if form.type.value == choice_value %}selected{% endif %}>
+                                {{ choice_label }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+                <!-- Conformity Message (Vérification via AgriDrug API) -->
+                {% if conformity_message %}
+                    <div class="alert {% if 'non conforme' in conformity_message %}alert-danger{% else %}alert-success{% endif %} mt-3">
+                        {{ conformity_message }}
+                    </div>
+                {% endif %}
+
+
+                <!-- Description Field -->
+                <div class="form-group">
+                    <label for="id_description">Description:</label>
+                    <textarea name="description" class="form-control" id="id_description" required>{{ form.description.value|default:'' }}</textarea>
+                </div>
+
+
+                <!-- Méthode d'application Field -->
+                <div class="form-group">
+                    <label for="id_méthode_application">Méthode d'application:</label>
+                    <input type="text" name="méthode_application" class="form-control" id="id_méthode_application" value="{{ form.méthode_application.value|default:'' }}" required>
+                </div>
+
+
+                <!-- Efficacité Field -->
+                <div class="form-group">
+                    <label for="id_efficacité">Efficacité (%):</label>
+                    <input type="number" name="efficacité" class="form-control" id="id_efficacité" value="{{ form.efficacité.value|default:'' }}" step="0.01" required>
+                </div>
+
+
+                <!-- Pests Field (Multi-select) -->
+                <div class="form-group">
+                    <label for="id_pests">Ravageurs ciblés:</label>
+                    <select name="pests" class="form-control" id="id_pests" multiple>
+                        {% for pest in form.pests.field.queryset %}
+                            <option value="{{ pest.pk }}" {% if pest.pk in form.pests.value %}selected{% endif %}>
+                                {{ pest.nom }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+                <!-- Submit and Cancel Buttons -->
+                <button type="submit" class="btn btn-primary">
+                    {% if form.instance.pk %}Mettre à jour{% else %}Ajouter{% endif %}
+                </button>
+                <a href="{% url 'controlproduct-list' %}" class="btn btn-secondary">Annuler</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Include Bootstrap CSS if not already included -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 
 

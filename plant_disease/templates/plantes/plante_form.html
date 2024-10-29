@@ -26,11 +26,19 @@
                     <input type="file" name="image" class="form-control-file" id="id_image">
                 </div>
                 
-                <!-- Type de Plante Dropdown -->
-                <div class="form-group">
-                    <label for="id_type_plante">Type de Plante:</label>
-                    {{ form.type_plante }}
-                </div>
+              <!-- Type de Plante Dropdown -->
+<div class="form-group">
+    <label for="id_type_plante">Type de Plante:</label>
+    <select name="type_plante" id="id_type_plante" class="form-control">
+        <option value="">Sélectionnez un type de plante</option> <!-- Placeholder option -->
+        {% for type in form.type_plante.field.queryset %}
+            <option value="{{ type.pk }}" {% if type.pk == form.type_plante.value %}selected{% endif %}>
+                {{ type.nom }} <!-- Assuming `nom` is the display name of the type -->
+            </option>
+        {% endfor %}
+    </select>
+</div>
+
                 
  <!-- Button to Generate Description -->
  <button type="button" id="generate-description-btn" class="btn btn-secondary mt-3">Générer Description</button>

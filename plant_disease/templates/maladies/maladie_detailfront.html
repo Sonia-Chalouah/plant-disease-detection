@@ -71,19 +71,20 @@
                         {% endif %}
                     </div>
 
-                    <!-- Causes of the Maladie -->
-                    <div class="mt-4">
-                        {% if maladie.causes.all %}
-                        <h5 class="text-primary">Causes:</h5>
-                        <ul class="list-group list-group-flush">
-                            {% for cause in maladie.causes.all %}
-                            <li class="list-group-item">{{ cause.nom }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% else %}
-                        <p>Aucune cause spécifiée.</p>
-                        {% endif %}
-                    </div>
+                 <!-- Causes of the Maladie -->
+<div class="mt-4">
+    {% if causes %}
+    <h5 class="text-primary">Causes:</h5>
+    <ul class="list-group list-group-flush">
+        {% for cause in causes %}
+        <li class="list-group-item">{{ cause.nom }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Aucune cause spécifiée.</p>
+    {% endif %}
+</div>
+
                 </div>
             </div>
         </div>

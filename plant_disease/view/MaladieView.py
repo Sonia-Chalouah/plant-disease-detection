@@ -19,7 +19,12 @@ class MaladieDetailfrontView(DetailView):
     model = Maladie
     template_name = 'maladies/maladie_detailfront.html'
     context_object_name = 'maladie'
-
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Use the correct related name for causes
+        context['causes'] = self.object.cause_maladies.all()
+        return context
 # Détails d'une maladie (Read - Detail)
 class MaladieDetailView(DetailView):
     model = Maladie
