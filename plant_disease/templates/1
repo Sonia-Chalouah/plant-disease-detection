@@ -1,0 +1,34 @@
+<!-- Maladie Detail Start -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body p-5">
+                    <!-- Maladie Title -->
+                    <h2 class="card-title text-primary text-center mb-4">{{ maladie.nom }}</h2>
+                    
+                    <!-- Maladie Type Badge -->
+                    <p class="text-center mb-4">
+                        <span class="badge bg-secondary">{{ maladie.type }}</span>
+                    </p>
+
+                    <!-- Maladie Description -->
+                    <p class="card-text">{{ maladie.description }}</p>
+                    
+                    <!-- Additional Details (Optional) -->
+                    {% if maladie.plantes.all %}
+                    <div class="mt-4">
+                        <h5 class="text-primary">Affects the following plants:</h5>
+                        <ul class="list-group list-group-flush">
+                            {% for plante in maladie.plantes.all %}
+                            <li class="list-group-item">{{ plante.nom }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Maladie Detail End -->

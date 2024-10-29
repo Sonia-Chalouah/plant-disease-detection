@@ -50,6 +50,10 @@ urlpatterns = [
     path('maladies/<int:pk>/update/', MaladieView.MaladieUpdateView.as_view(), name='maladie-update'),
     path('maladies/<int:pk>/delete/', MaladieView.MaladieDeleteView.as_view(), name='maladie-delete'),
     path('maladies/', MaladieView.MaladieListView.as_view(), name='maladie-list'),
+     # Front-office URLs
+    path('maladiesFront/', MaladieView.MaladieListFrontView.as_view(), name='Maladies'),
+    path('maladiesFront/<int:pk>/', MaladieView.MaladieDetailfrontView.as_view(), name='maladie-detailfront'),
+
 
 
       # Cause URLs
