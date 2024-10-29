@@ -76,13 +76,15 @@ urlpatterns = [
     path('diagnostic/<int:pk>/update/', DiagnosticView.DiagnosticUpdateView.as_view(), name='diagnostic-update'),
     path('diagnostic/<int:pk>/delete/', DiagnosticView.DiagnosticDeleteView.as_view(), name='diagnostic-delete'),
      # URLs for Symptôme
-    path('symptomes/', symptomeView.SymptomeListView.as_view(), name='symptome-list'),  # Corrected: Use .as_view()
+    path('symptomes/', symptomeView.SymptomeListView.as_view(), name='symptome-list'),  
+    path('symptomes/front', symptomeView.FrontOfficeSymptomeListView.as_view(), name='symptome_frontlist'),
     path('symptomes/<int:pk>/', symptomeView.SymptomeDetailView.as_view(), name='symptome-detail'),  # Detail view
     path('symptomes/add/', symptomeView.SymptomeCreateView.as_view(), name='symptome-create'),  # Create view
     path('symptomes/<int:pk>/edit/', symptomeView.SymptomeUpdateView.as_view(), name='symptome-update'),  # Update view
     path('symptomes/<int:pk>/delete/', symptomeView.SymptomeDeleteView.as_view(), name='symptome-delete'),  # Delete view
   # URLs for Prevention
     path('preventions/', preventionView.PreventionListView.as_view(), name='prevention-list'),  # List view
+    path('preventions/front',preventionView.FrontPreventionListView.as_view(), name='front-prevention-list'), 
     path('preventions/<int:pk>/', preventionView.PreventionDetailView.as_view(), name='prevention-detail'),  # Detail view
     path('preventions/add/', preventionView.PreventionCreateView.as_view(), name='prevention-create'),  # Create view
     path('preventions/<int:pk>/edit/', preventionView.PreventionUpdateView.as_view(), name='prevention-update'),  # Update view

@@ -8,7 +8,9 @@
     <h2><strong>Nom:</strong> {{ symptome.nom }}</h2>
     
     <p><strong>Description:</strong> {{ symptome.description }}</p>
-    <p><strong>Gravité:</strong> {{ symptome.gravite }}</p>
+    <p><strong>Description:</strong> {{ symptome.plante.nom }}</p>
+
+
     
     <a href="{% url 'symptome-update' symptome.id %}" class="btn btn-warning">Modifier</a>
     <a href="{% url 'symptome-list' %}" class="btn btn-secondary">Retour à la liste</a>

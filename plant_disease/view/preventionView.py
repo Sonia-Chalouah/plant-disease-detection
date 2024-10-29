@@ -11,6 +11,15 @@ class PreventionListView(ListView):
     template_name = 'preventions/prevention_list.html'
     context_object_name = 'preventions'
 
+class FrontPreventionListView(ListView):
+    model = prevention
+    template_name = 'preventions/front_prevention_list.html'  # Adjust the template name
+    context_object_name = 'preventions'
+
+    def get_queryset(self):
+        # Get the symptom ID from the query parameters
+        symptom_id = self.request.GET.get('symptome_id')
+        return prevention.objects.filter(symptômes_connexes_id=symptom_id)
 # Détails d'une mesure préventive (Read - Detail)
 class PreventionDetailView(DetailView):
     model = prevention
